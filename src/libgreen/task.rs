@@ -461,6 +461,8 @@ impl Runtime for GreenTask {
         })
     }
 
+    fn can_block(&self) -> bool { false }
+
     fn wrap(~self) -> ~Any { self as ~Any }
 }
 
