@@ -455,7 +455,7 @@ impl Drop for Mutex {
 #[cfg(test)]
 mod test {
     use prelude::*;
-    use super::{Mutex, MUTEX_INIT};
+    use super::{Mutex, StaticMutex, MUTEX_INIT};
     use native;
 
     #[test]

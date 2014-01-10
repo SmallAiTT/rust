@@ -225,10 +225,11 @@ mod imp {
 
 #[cfg(windows)]
 mod imp {
-    use libc;
     use libc::{HANDLE, BOOL, LPSECURITY_ATTRIBUTES, c_void, DWORD, LPCSTR};
-    use ptr;
+    use libc;
     use ptr::RawPtr;
+    use ptr;
+    use sync::atomics;
 
     type LPCRITICAL_SECTION = *c_void;
     static SPIN_COUNT: DWORD = 4000;
@@ -355,6 +356,7 @@ mod imp {
 mod test {
     use prelude::*;
 
+    use super::{Mutex, MUTEX_INIT};
     use rt::thread::Thread;
     use task;
 

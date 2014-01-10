@@ -72,7 +72,9 @@ impl<T: Send> Queue<T> {
         (*node).next.store(0, atomics::Release);
         let prev = self.head.swap(node as uint, atomics::AcqRel);
 
-        // TODO: dox
+        // Note that this code is slightly modified to allow static
+        // initialization of these queues with rust's flavor of static
+        // initialization.
         if prev == 0 {
             self.stub.next.store(node as uint, atomics::Release);
         } else {
