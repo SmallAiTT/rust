@@ -381,7 +381,7 @@ impl StaticMutex {
                     0 => {}
                     n => {
                         let t = unsafe { BlockedTask::cast_from_uint(n) };
-                        t.wake().map(|t| t.reawaken(true));
+                        t.wake().map(|t| t.reawaken());
                     }
                 }
             }
